@@ -7,8 +7,8 @@ const http_code = {
 };
 
 const port = {
-  // server: process.env.PORT
-  server: 3002,
+  server: process.env.PORT,
+  // server: 3002,
 };
 
 const messages = {

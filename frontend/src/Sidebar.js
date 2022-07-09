@@ -29,3 +29,5 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+// "proxy": "http://localhost:3002",
