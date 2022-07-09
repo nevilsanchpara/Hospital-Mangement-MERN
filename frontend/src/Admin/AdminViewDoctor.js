@@ -32,8 +32,9 @@ const AdminViewDoctor = (props) => {
     axios
       .delete(`/doctor/${id}`)
       .then(function (response) {
-        console.log("deleted");
+        // console.log("deleted");
         toast.success("Doctor deleted succesfully!!");
+        nav("/admin-dashboard");
       })
       .catch(function (error) {
         console.log(error);
@@ -47,7 +48,7 @@ const AdminViewDoctor = (props) => {
 
   return (
     <>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
       <Sidebar />
       <div className="content">
         <div className="table-responsive">
@@ -76,6 +77,9 @@ const AdminViewDoctor = (props) => {
                 <th scope="col" className="table-color">
                   Delete
                 </th>
+                <th scope="col" className="table-color">
+                  Status
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -98,6 +102,15 @@ const AdminViewDoctor = (props) => {
                         style={{ color: "red", cursor: "pointer" }}
                         onClick={() => deleteHandler(doctor._id)}
                       />
+                    </td>
+                    <td>
+                      {doctor.isVerified === "approved" ? (
+                        <span id="h">Approved</span>
+                      ) : doctor.isVerified === "pending" ? (
+                        <span id="p">Pending</span>
+                      ) : (
+                        <span id="r">Rejected</span>
+                      )}
                     </td>
                   </tr>
                 );

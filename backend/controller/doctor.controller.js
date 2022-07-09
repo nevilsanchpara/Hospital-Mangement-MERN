@@ -139,6 +139,22 @@ class doctorController {
       });
     }
   };
+  static getDoctor = async (req, res) => {
+    try {
+      let id = req.body.id;
+      console.log(id);
+      const result = await doctorModel.findById(id);
+      // .populate("userId")
+      // .populate("doctorId");
+      return res.json({
+        data: result,
+        message: "",
+        status: http_code.ok,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 module.exports = doctorController;

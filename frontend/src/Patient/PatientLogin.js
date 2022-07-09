@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import "./patientLogin.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,7 +55,7 @@ const PatientLogin = (props) => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Patient form</h1>
@@ -86,7 +86,7 @@ const PatientLogin = (props) => {
               id="exampleInputPassword1"
             />
             <Validation error={resError.password} />
-            New user? <a href="/patientsignup">click here</a>
+            New user? <Link to="/patientsignup">click here</Link>
           </div>
           <button type="submit" className="btn btn-primary" onClick={onSubmit}>
             Submit

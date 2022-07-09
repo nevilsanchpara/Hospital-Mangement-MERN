@@ -26,3 +26,35 @@
   height: 80px;
   width: 150px;
 }
+
+.logout {
+  color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 500) {
+  /* ...;
+  */
+  .openbtn {
+    display: none;
+  }
+}
+
+.openbtn {
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}

@@ -50,7 +50,7 @@ const PatientSignup = (props) => {
   };
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Create Patient Account</h1>

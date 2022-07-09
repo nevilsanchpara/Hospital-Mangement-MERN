@@ -22,42 +22,44 @@ const PatientViewAppointment = (props) => {
   }, []);
   return (
     <>
-      <PatientNavbar />
-      <p className="text-center mt-5">Your Appointments</p>
-      <table class="table table-data mt-2">
-        <thead>
-          <tr>
-            <th scope="col" className="table-color">
-              #
-            </th>
-            <th scope="col" className="table-color">
-              Doctor Name
-            </th>
-            <th scope="col" className="table-color">
-              Description
-            </th>
-            <th scope="col" className="table-color">
-              Appointment Status
-            </th>
-            <th scope="col" className="table-color">
-              Discharged
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((d, i) => {
-            return (
-              <tr>
-                <th scope="row">{i + 1}</th>
-                <td>{d.doctorId.name}</td>
-                <td>{d.description}</td>
-                <td>{d.isApproved}</td>
-                <td>{d.isDischarged ? "Yes" : "No"}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {/* <PatientNavbar /> */}
+      <div className="content">
+        <p className="text-center mt-5">Your Appointments</p>
+        <table class="table table-data mt-2">
+          <thead>
+            <tr>
+              <th scope="col" className="table-color">
+                #
+              </th>
+              <th scope="col" className="table-color">
+                Doctor Name
+              </th>
+              <th scope="col" className="table-color">
+                Description
+              </th>
+              <th scope="col" className="table-color">
+                Appointment Status
+              </th>
+              <th scope="col" className="table-color">
+                Discharged
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.map((d, i) => {
+              return (
+                <tr>
+                  <th scope="row">{i + 1}</th>
+                  <td>{d.doctorId.name}</td>
+                  <td>{d.description}</td>
+                  <td>{d.isApproved}</td>
+                  <td>{d.isDischarged ? "Yes" : "No"}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

@@ -19,13 +19,14 @@ import AdminEBill from "./../Admin/AdminEBill";
 import AdminApproveAppointment from "../Admin/AdminApproveAppointment";
 import AdminViewAppointment from "./../Admin/AdminViewAppointment";
 import AdminAddAppointment from "./../Admin/AdminAddAppointment";
+import Navbar from "../Components/Navbar";
 
 const AdminNavigation = () => {
-  console.log("hi from adminnavigator");
   return (
     <div>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminsignup" element={<AdminSignup />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />

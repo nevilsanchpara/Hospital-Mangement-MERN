@@ -1,5 +1,6 @@
 import axios from "axios";
 import { isEmail } from "./../../Helpers";
+import { setCommonType } from "./../Actions/CommonAction";
 import {
   setAdminDoctors,
   setAdminLoader,
@@ -33,10 +34,17 @@ export const signup = (obj) => async (dispatch) => {
     }
     dispatch(setAdminLoader(true));
     const response = await axios.post(`/admin/register`, obj);
-    // console.log(response.data);
-    const { data } = response.data;
+    console.log(response.data);
+    const data = response.data;
     // dispatch(setAdminUser(data));
-    return true;
+    console.log(data.status);
+    if (data.status === 200) {
+      console.log("hi");
+      return true;
+    } else {
+      dispatchAdminError("error", "User already exist", dispatch);
+      return false;
+    }
   } catch (e) {
     dispatchAdminError("error", "Unable to signup, please try again", dispatch);
     return false;
@@ -67,10 +75,12 @@ export const login = (obj) => async (dispatch) => {
     const { data } = response.data;
     console.log("data", data);
     dispatch(setAdminUser(data));
+    dispatch(setCommonType("admin"));
     localStorage.setItem("data", JSON.stringify(data));
     localStorage.setItem("type", "admin");
     return true;
   } catch (e) {
+    console.log("e", e);
     dispatchAdminError("error", "Unable to login, please try again", dispatch);
     return false;
   } finally {

@@ -60,7 +60,7 @@ const DoctorLogin = (props) => {
   // console.log(doctorData);
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Doctor form</h1>

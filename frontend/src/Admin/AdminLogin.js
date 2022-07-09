@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Navbar from "../Components/Navbar";
 import "./adminLogin.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -48,7 +48,7 @@ const AdminLogin = (props) => {
       toast.success("Login Successfully done.");
       setTimeout(() => {
         nav("/admin-dashboard", { replace: true });
-      }, 2500);
+      }, 1000);
       // alert("done");
     }
   };
@@ -56,7 +56,7 @@ const AdminLogin = (props) => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Admin form</h1>
@@ -80,7 +80,7 @@ const AdminLogin = (props) => {
               autoComplete="on"
             />
             <Validation error={resError.password} />
-            New user? <a href="/adminsignup">click here</a>
+            New user? <Link to="/adminsignup">click here</Link>
           </div>
           <button type="submit" className="btn btn-primary" onClick={onSubmit}>
             Submit

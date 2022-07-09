@@ -11,13 +11,15 @@ import GenerateEbill from "./../Doctor/GenerateEbill";
 import DoctorPatient from "./../Doctor/DoctorPatient";
 import DoctorWaitingPage from "./../Doctor/DoctorWaitingPage";
 import DoctorViewPatient from "../Doctor/DoctorViewPatient";
+import Navbar from "../Components/Navbar";
+import DoctorSidebar from "./../Components/DoctorSidebar";
 
 const DoctorNavigation = () => {
   return (
     <div>
+      <Navbar />
+      <DoctorSidebar />
       <Routes>
-        <Route path="/doctorlogin" element={<DoctorLogin />} />
-        <Route path="/doctorsignup" element={<DoctorSignup />} />
         <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
         <Route path="/doctor-appointment" element={<DoctorAppointment />} />
         <Route path="/doctor-patient" element={<DoctorPatient />} />

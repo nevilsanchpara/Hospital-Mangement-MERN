@@ -50,7 +50,7 @@ const AdminUpdatePatient = () => {
   };
   return (
     <>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
       <Sidebar />
       {/* <div className="content"> */}
       <div className="form-div">

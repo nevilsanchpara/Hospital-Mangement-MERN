@@ -61,7 +61,7 @@ const AdminAddAppointment = () => {
   };
   return (
     <>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
       <Sidebar />
       <div className="form-div">
         <form>

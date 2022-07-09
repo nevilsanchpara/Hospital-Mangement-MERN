@@ -7,8 +7,10 @@ import "./Loading.css";
 import Sidebar from "./../Sidebar";
 // import "./../Sidebar.css";
 import { connect } from "react-redux";
+import moment from "moment";
 import { adminDoctors, adminPatients } from "./../Redux/Services/AdminService";
 import { Link } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 const AdminDashboard = (props) => {
   const [patients, setPatients] = useState();
   const [doctors, setDoctors] = useState();
@@ -74,7 +76,8 @@ const AdminDashboard = (props) => {
 
   return (
     <>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
+      {/* <Navbar /> */}
       <Sidebar />
       <div className="content">
         <div className="row">
@@ -156,9 +159,9 @@ const AdminDashboard = (props) => {
                           <td>{doctor.mobile}</td>
                           <td>
                             {doctor.isVerified === "approved" ? (
-                              <span id="p">Approved</span>
+                              <span id="h">Approved</span>
                             ) : doctor.isVerified === "pending" ? (
-                              <span id="h">Pending</span>
+                              <span id="p">Pending</span>
                             ) : (
                               <span id="r">Rejected</span>
                             )}
@@ -207,7 +210,7 @@ const AdminDashboard = (props) => {
                           <td>{patient.email}</td>
                           <td>{patient.phone}</td>
                           <td>{patient.name}</td>
-                          <td>{patient.name}</td>
+                          <td>{moment(patient.date).format("LL")}</td>
                         </tr>
                       );
                     })}

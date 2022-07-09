@@ -1,7 +1,8 @@
 import * as actions from "../../Actions/types";
 
 const initialState = {
-  doctorUser: [],
+  // doctorUser: [],
+  doctorUser: {},
   resError: {},
 };
 
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
     //     loading: action.payload,
     //   };
     case actions.SET_DOCTOR_USER:
+      console.log("action ", action.payload);
       return {
         ...state,
         doctorUser: action.payload,

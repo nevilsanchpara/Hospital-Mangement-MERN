@@ -24,54 +24,56 @@ const DoctorViewPatient = (props) => {
   }, []);
   return (
     <>
-      <DoctorNavbar />
-      <div className="table-data">
-        <p className="text-center mt-5">All Patients</p>
-        <table className="table ">
-          <thead>
-            <tr>
-              <th scope="col" className="table-color">
-                #
-              </th>
-              <th scope="col" className="table-color">
-                Patient name
-              </th>
-              <th scope="col" className="table-color">
-                description
-              </th>
-              <th scope="col" className="table-color">
-                Mobile
-              </th>
-              <th scope="col" className="table-color">
-                Status
-              </th>
-              <th scope="col" className="table-color">
-                Address
-              </th>
-              <th scope="col" className="table-color">
-                Date
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {patients?.map((patient, i) => {
-              console.log(patient);
-              return (
-                <tr key={i}>
-                  <th scope="row">{i + 1}</th>
-                  <td>{patient.userId?.name}</td>
-                  <td>{patient.description}</td>
-                  <td>{patient.userId?.phone}</td>
-                  <td>
-                    {patient.isDischarged ? "Discharged" : "Under Treatment"}
-                  </td>
-                  <td>dummy address</td>
-                  <td>dummy date</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      {/* <DoctorNavbar /> */}
+      <div className="content">
+        <div className="table-data">
+          <p className="text-center mt-5">All Patients</p>
+          <table className="table ">
+            <thead>
+              <tr>
+                <th scope="col" className="table-color">
+                  #
+                </th>
+                <th scope="col" className="table-color">
+                  Patient name
+                </th>
+                <th scope="col" className="table-color">
+                  description
+                </th>
+                <th scope="col" className="table-color">
+                  Mobile
+                </th>
+                <th scope="col" className="table-color">
+                  Status
+                </th>
+                <th scope="col" className="table-color">
+                  Address
+                </th>
+                <th scope="col" className="table-color">
+                  Date
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {patients?.map((patient, i) => {
+                console.log(patient);
+                return (
+                  <tr key={i}>
+                    <th scope="row">{i + 1}</th>
+                    <td>{patient.userId?.name}</td>
+                    <td>{patient.description}</td>
+                    <td>{patient.userId?.phone}</td>
+                    <td>
+                      {patient.isDischarged ? "Discharged" : "Under Treatment"}
+                    </td>
+                    <td>dummy address</td>
+                    <td>dummy date</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

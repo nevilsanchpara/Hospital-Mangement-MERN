@@ -124,6 +124,23 @@ class patientController {
     const doctor = await patientModel.findByIdAndDelete(id);
     res.json(doctor);
   };
+
+  static getPatient = async (req, res) => {
+    try {
+      let id = req.body.id;
+      console.log(id);
+      const result = await patientModel.findById(id);
+      // .populate("userId")
+      // .populate("doctorId");
+      return res.json({
+        data: result,
+        message: "",
+        status: http_code.ok,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 module.exports = patientController;

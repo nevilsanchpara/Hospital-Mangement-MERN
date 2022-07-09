@@ -6,9 +6,9 @@ class appointmentController {
   static appointment = async (req, res) => {
     try {
       const data = req.body.userId;
-      console.log(data);
+      // console.log(data);
       const doctordata = await doctorModal.findById(req.body.doctorId);
-      console.log(doctordata);
+      // console.log(doctordata);
       var _saved = {
         doctorId: req.body.doctorId,
         description: req.body.description,
@@ -26,12 +26,12 @@ class appointmentController {
         code: http_code.ok,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   static appointments = async (req, res) => {
     const { isApproved } = req.query;
-    console.log(isApproved);
+    // console.log(isApproved);
     if (isApproved) {
       const appointments = await appointmentModel
         .find({
@@ -39,7 +39,7 @@ class appointmentController {
         })
         .populate("userId")
         .populate("doctorId");
-      console.log(appointments);
+      // console.log(appointments);
       return res.json({
         data: appointments,
         message: messages.blank,
@@ -52,8 +52,8 @@ class appointmentController {
         })
         .populate("userId")
         .populate("doctorId");
-      console.log("appointments");
-      console.log(appointments);
+      // console.log("appointments");
+      // console.log(appointments);
       return res.json({
         data: appointments,
         message: messages.blank,
@@ -64,7 +64,7 @@ class appointmentController {
         .find()
         .populate("doctorId")
         .populate("userId");
-      console.log(appointments);
+      // console.log(appointments);
       return res.json({
         data: appointments,
         message: messages.blank,
@@ -74,14 +74,14 @@ class appointmentController {
   };
   static appointmentWithUser = async (req, res) => {
     try {
-      console.log("inside");
+      // console.log("inside");
       const a = req.query.doctorId;
-      console.log(a);
+      console.log("a", a);
       if (a) {
         const userDetails = await appointmentModel
           .find({ doctorId: a })
           .populate("userId");
-        console.log(userDetails);
+        console.log("userDetails", userDetails);
         return res.json({
           data: userDetails,
           message: messages.blank,
@@ -89,18 +89,18 @@ class appointmentController {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   static appointmentsByuser = async (req, res) => {
     try {
       const a = req.query.userId;
-      console.log(a);
+      // console.log(a);
       if (a) {
         const userDetails = await appointmentModel
           .find({ userId: a })
           .populate("doctorId");
-        console.log(userDetails);
+        // console.log(userDetails);
         return res.json({
           data: userDetails,
           message: messages.blank,
@@ -108,17 +108,17 @@ class appointmentController {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   static dischargedAppointmentByDr = async (req, res) => {
     try {
-      console.log("inside");
+      // console.log("inside");
       const a = req.query.doctorId;
       const isDischarged = req.query.isDischarged;
-      console.log(a);
-      console.log(isDischarged);
+      // console.log(a);
       // console.log(isDischarged);
+      console.log(isDischarged);
       // // if (a) {
       let userDetails = await appointmentModel
         .find({
@@ -127,7 +127,7 @@ class appointmentController {
         })
         .populate("userId");
       // .find({ isDischarged: false })
-      console.log(userDetails);
+      // console.log(userDetails);
       // const userDetails = await appointmentModel
       //   .find({ doctorId: { $in: a }, isDischarged: { $in: false } })
       //   // .find({ isDischarged: false })
@@ -139,7 +139,7 @@ class appointmentController {
       });
       // }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   // static updateAppointment = async (req, res) => {
@@ -149,7 +149,7 @@ class appointmentController {
   //       const userDetails = await appointmentModel.findByIdAndUpdate(id, {
   //         isApproved: isApproved,
   //       });
-  //       console.log(userDetails);
+  // console.log(userDetails);
   //       return res.json({
   //         data: userDetails,
   //         message: messages.blank,
@@ -157,7 +157,7 @@ class appointmentController {
   //       });
   //     }
   //   } catch (error) {
-  //     console.log(error);
+  // console.log(error);
   //   }
   // };
 }

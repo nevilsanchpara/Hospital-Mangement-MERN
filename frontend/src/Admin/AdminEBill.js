@@ -64,7 +64,7 @@ const AdminEBill = () => {
 
   return (
     <>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
       <Sidebar />
       <div className="content">
         <h1>Invoice of Patient</h1>

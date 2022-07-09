@@ -52,7 +52,7 @@ const PatientBookAppointment = (props) => {
   };
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Book Appointment Details</h1>

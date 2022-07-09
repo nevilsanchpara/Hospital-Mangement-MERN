@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminNavbar from "./AdminNavbar";
 import Sidebar from "./../Sidebar";
 import "./form.css";
+import { connect } from "react-redux";
+import { signup } from "./../Redux/Services/DoctorService";
+import Validation from "./../Components/Validation";
 
-const AdminAddDoctor = () => {
+const AdminAddDoctor = (props) => {
   const nav = useNavigate();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -18,116 +21,111 @@ const AdminAddDoctor = () => {
   const [address, setAddress] = useState();
   const [department, setDepartment] = useState();
 
-  const onSubmit = (e) => {
+  const { loading, resError = {} } = props.doctor;
+  // console.log(props.doctor);
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("/doctor/register", {
-        name,
-        email,
-        password,
-        graduation,
-        department,
-        mobile,
-        address,
-        isVerified: "approved",
-      })
-      .then(function (response) {
-        console.table(response.data);
-        if (response.data.status === 200) {
-          toast.success("Doctor Account Created Successfully!!");
-          nav("/admin-dashboard");
-        } else {
-          toast.error("Internal Server Error");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log("iside hiii");
+    const myobj = {
+      name,
+      email,
+      password,
+      mobile,
+      graduation,
+      address,
+      department,
+      isVerified: "approved",
+    };
+    console.log(myobj);
+    const result = await props.signup(myobj);
+    if (result) {
+      nav("/admin-dashboard");
+    }
   };
   return (
     <>
-      <AdminNavbar />
-      <Sidebar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
-          <h1>Doctor Register form</h1>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">
-              Name
-            </label>
+          <h1>Add new doctor</h1>
+          <div className="mb-3">
+            <label className="form-label">Name</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="name"
               onChange={(e) => setName(e.target.value)}
             />
-            <label for="exampleInputEmail1" class="form-label">
-              Email
-            </label>
+            <Validation error={resError.name} />
+            <label className="form-label">Email</label>
             <input
               type="email"
-              class="form-control"
-              id="exampleInputEmail1"
+              className="form-control"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="exampleInputPassword1" class="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <label for="exampleInputEmail1" class="form-label">
-              Graduation
-            </label>
+            <Validation error={resError.email} />
+
+            <label className="form-label">Graduation</label>
             <input
               type="grduation"
-              class="form-control"
-              id="graduation"
               onChange={(e) => setGraduation(e.target.value)}
+              className="form-control"
             />
-            <label for="inputMobile" class="form-label">
-              Mobile
-            </label>
+            <Validation error={resError.graduation} />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Validation error={resError.password} />
+
+            <label className="form-label">Mobile</label>
             <input
               type="number"
-              class="form-control"
-              id="mobile"
+              className="form-control"
+              id="exampleInputPassword1"
               onChange={(e) => setMobile(e.target.value)}
             />
-            <label for="inputAddress" class="form-label">
-              Address
-            </label>
+            <Validation error={resError.mobile} />
+
+            <label className="form-label">Address</label>
             <input
               type="text"
-              class="form-control"
-              id="mobile"
+              className="form-control"
               onChange={(e) => setAddress(e.target.value)}
             />
-            <label for="inputDepartment" class="form-label">
-              Department
-            </label>
+            <Validation error={resError.address} />
+
+            <label className="form-label">Department</label>
             <input
               type="text"
-              class="form-control"
-              id="mobile"
+              className="form-control"
+              id="exampleInputPassword1"
               onChange={(e) => setDepartment(e.target.value)}
             />
+            <Validation error={resError.department} />
           </div>
           <p>
-            Exisitng user? <a href="/doctorlogin">click here</a>
+            Exisitng user? <Link to="/doctorlogin">click here</Link>
           </p>
-          <button type="submit" class="btn btn-primary" onClick={onSubmit}>
-            Add
+          <button type="submit" className="btn btn-primary" onClick={onSubmit}>
+            Register
           </button>
         </form>
-        <ToastContainer />
       </div>
     </>
   );
 };
 
-export default AdminAddDoctor;
+// export default AdminAddDoctor;
+const mapStateToProps = (state) => ({
+  doctor: state.doctor,
+});
+
+export default connect(mapStateToProps, {
+  // clearAuthResponseMsg,
+  signup,
+})(AdminAddDoctor);

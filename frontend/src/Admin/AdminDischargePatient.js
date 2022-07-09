@@ -24,7 +24,7 @@ const AdminDischargePatient = () => {
   }, []);
   return (
     <>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
       <Sidebar />
       <div className="content">
         <div className="table-responsive">

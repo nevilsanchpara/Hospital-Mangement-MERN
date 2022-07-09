@@ -28,63 +28,65 @@ const DoctorViewDischargePatient = (props) => {
   }, []);
   return (
     <>
-      <DoctorNavbar />
-      <p className="text-center mt-5">Doctors</p>
-      <table className="table table-data mt-2">
-        <thead>
-          <tr>
-            <th scope="col" className="table-color">
-              #
-            </th>
-            <th scope="col" className="table-color">
-              Name
-            </th>
-            <th scope="col" className="table-color">
-              Admit Date
-            </th>
-            <th scope="col" className="table-color">
-              Release Date
-            </th>
-            <th scope="col" className="table-color">
-              Symptoms
-            </th>
-            <th scope="col" className="table-color">
-              Mobile
-            </th>
-            <th scope="col" className="table-color">
-              Discharge
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointments?.map((appointment, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                {/* <td>{appointment}</td> */}
-                <td>{appointment.userId.name}</td>
-                <td>{appointment.description}</td>
-                <td>{appointment.userId.phone}</td>
-                <td>{appointment.userId.phone}</td>
-                <td>{appointment.userId.phone}</td>
-                <td>
-                  <ImExit
-                    style={{
-                      color: "red",
-                      cursor: "pointer",
-                    }}
-                    onClick={() =>
-                      nav(
-                        `/generate-ebill/${appointment._id}/${appointment.userId._id}/${appointment.doctorId}`
-                      )
-                    }
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {/* <DoctorNavbar /> */}
+      <div className="content">
+        <p className="text-center mt-5">Doctors</p>
+        <table className="table table-data mt-2">
+          <thead>
+            <tr>
+              <th scope="col" className="table-color">
+                #
+              </th>
+              <th scope="col" className="table-color">
+                Name
+              </th>
+              <th scope="col" className="table-color">
+                Admit Date
+              </th>
+              <th scope="col" className="table-color">
+                Release Date
+              </th>
+              <th scope="col" className="table-color">
+                Symptoms
+              </th>
+              <th scope="col" className="table-color">
+                Mobile
+              </th>
+              <th scope="col" className="table-color">
+                Discharge
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {appointments?.map((appointment, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  {/* <td>{appointment}</td> */}
+                  <td>{appointment.userId.name}</td>
+                  <td>{appointment.description}</td>
+                  <td>{appointment.userId.phone}</td>
+                  <td>{appointment.userId.phone}</td>
+                  <td>{appointment.userId.phone}</td>
+                  <td>
+                    <ImExit
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() =>
+                        nav(
+                          `/generate-ebill/${appointment._id}/${appointment.userId._id}/${appointment.doctorId}`
+                        )
+                      }
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

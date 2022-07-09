@@ -5,9 +5,10 @@ import {
 } from "../Actions/PatientAction";
 import axios from "axios";
 import { setPatientResponseError } from "../Actions/PatientAction";
+import { setCommonType } from "./../Actions/CommonAction";
 export const signup = (obj) => async (dispatch) => {
   try {
-    // console.log(obj);
+    console.log(obj);
     // dispatch(clearAuthResponseMsg());
     if (!obj) {
       dispatchPatientError("name", "Name is required", dispatch);
@@ -26,6 +27,12 @@ export const signup = (obj) => async (dispatch) => {
       return;
     } else if (!obj.phone) {
       dispatchPatientError("phone", "phone number is Required", dispatch);
+      return;
+    } else if (!obj.symptom) {
+      dispatchPatientError("symptom", "symptom is Required", dispatch);
+      return;
+    } else if (!obj.address) {
+      dispatchPatientError("address", "address is Required", dispatch);
       return;
     }
     // dispatch(setDoctorLoader(true));
@@ -64,10 +71,11 @@ export const login = (obj) => async (dispatch) => {
     }
     // dispatch(setAdminLoader(true));
     const response = await axios.post(`/patient/login`, obj);
-    // console.log(response.data);
+    console.log(response.data.data, "________________");
     const { data } = response.data;
     dispatch(setPatientUser(data));
-    localStorage.setItem("data", JSON.stringify("data"));
+    dispatch(setCommonType("patient"));
+    localStorage.setItem("data", JSON.stringify(data));
     localStorage.setItem("type", "patient");
     return true;
   } catch (e) {

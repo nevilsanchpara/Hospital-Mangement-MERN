@@ -20,10 +20,10 @@ class adminController {
           password: hashedPassword,
           phone: req.body.phone,
         };
-        console.log(req.image);
-        //   if (req.image.length && req.image) {
-        //     _saved.profile = req.files[0].myfilepath;
-        //   }
+        // console.log(req.image);
+        if (req.files.length && req.files) {
+          _saved.profile = req.files[0].myfilepath;
+        }
         const admin = new adminModel(_saved);
         await admin.save();
         // const result = adminModel(_saved).save();
@@ -50,15 +50,15 @@ class adminController {
   static changeVerification = async (req, res) => {
     try {
       const id = req.params.id;
-      console.log(req.params.id);
-      console.log(id);
+      // console.log(req.params.id);
+      // console.log(id);
       if (req.query.isVerified === "approved") {
         try {
-          console.log("INSIDE APPROVED_");
+          // console.log("INSIDE APPROVED_");
           const result = await doctorModel.findByIdAndUpdate(id, req.body, {
             new: true,
           });
-          console.log(result);
+          // console.log(result);
           return res.json({
             data: result,
             message: "Approved",
@@ -68,8 +68,8 @@ class adminController {
           console.log(error);
         }
       } else {
-        console.log(req.query.isVerified);
-        console.log("INSIDE ELSE");
+        // console.log(req.query.isVerified);
+        // console.log("INSIDE ELSE");
         await doctorModel.findByIdAndUpdate(id, req.body, {
           new: true,
         });
@@ -87,7 +87,7 @@ class adminController {
   static changeAppointmentVerification = async (req, res) => {
     try {
       const id = req.params.id;
-      console.log("id 1");
+      // console.log("id 1");
       if (req.query.isApproved === "approved") {
         try {
           console.log("INSIDE APPROVED1");
@@ -103,8 +103,8 @@ class adminController {
           console.log(error);
         }
       } else if (req.query.isApproved === "rejected") {
-        console.log(req.query.isApproved);
-        console.log("INSIDE ELSE");
+        // console.log(req.query.isApproved);
+        // console.log("INSIDE ELSE");
         await appointmentModel.findByIdAndUpdate(id, req.body, {
           new: true,
         });
@@ -127,8 +127,8 @@ class adminController {
   static dischargePatient = async (req, res) => {
     try {
       const id = req.params.id;
-      console.log(id);
-      console.log(id);
+      // console.log(id);
+      // console.log(id);
       const result = await appointmentModel.findByIdAndUpdate(
         id,
         { isDischarged: true },
@@ -160,39 +160,59 @@ class adminController {
       console.log(error);
     }
   };
+  static getAdmin = async (req, res) => {
+    try {
+      let id = req.body.id;
+      console.log(id);
+      const result = await adminModel.findById(id);
+      // .populate("userId")
+      // .populate("doctorId");
+      return res.json({
+        data: result,
+        message: "",
+        status: http_code.ok,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   static login = async (req, res) => {
     const user = await adminModel.findOne({ email: req.body.email });
-    if (user) {
-      const validpassword = await bcrypt.compare(
-        req.body.password,
-        user.password
-      );
-      if (validpassword) {
-        var data = {
-          email: user.email,
-          _id: user._id,
-          phone: user.phone,
-        };
-        const token = await createToken(data);
-        return res.json({
-          data: { ...user._doc, token: token },
-          message: messages.blank,
-          status: http_code.ok,
-        });
+    try {
+      if (user) {
+        const validpassword = await bcrypt.compare(
+          req.body.password,
+          user.password
+        );
+        if (validpassword) {
+          var data = {
+            email: user.email,
+            _id: user._id,
+            phone: user.phone,
+          };
+          const token = await createToken(data);
+          return res.json({
+            data: { ...user._doc, token: token },
+            message: messages.blank,
+            status: http_code.ok,
+          });
+        } else {
+          return res.json({
+            data: {},
+            message: messages.invalidpassword,
+            status: http_code.forbidden,
+          });
+        }
       } else {
         return res.json({
           data: {},
-          message: messages.invalidpassword,
+          message: messages.userdoesnotexist,
           status: http_code.forbidden,
         });
       }
-    } else {
-      return res.json({
-        data: {},
-        message: messages.userdoesnotexist,
-        status: http_code.forbidden,
-      });
+    } catch (error) {
+      console.log(error);
     }
   };
 }

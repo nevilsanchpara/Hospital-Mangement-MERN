@@ -7,6 +7,7 @@ import * as actions from "./types";
 //   };
 // };
 export const setDoctorUser = (payload) => {
+  console.log("payload ", payload);
   return {
     type: actions.SET_DOCTOR_USER,
     payload: payload,

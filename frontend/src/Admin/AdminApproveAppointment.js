@@ -59,7 +59,7 @@ const AdminApproveAppointment = () => {
   };
   return (
     <div>
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
       <Sidebar />
       <div className="content">
         <div className="table-responsive">

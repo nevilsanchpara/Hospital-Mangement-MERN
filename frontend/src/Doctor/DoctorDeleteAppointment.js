@@ -5,7 +5,7 @@ import DoctorNavbar from "./DoctorNavbar";
 const DoctorDeleteAppointment = () => {
   return (
     <div>
-      <DoctorNavbar />
+      {/* <DoctorNavbar /> */}
       <p className="text-center mt-5">Patient</p>
       <table class="table table-data mt-2">
         <thead>

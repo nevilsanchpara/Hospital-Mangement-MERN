@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 // import { DataContext } from "../context/DataContext";
 import DoctorNavbar from "./DoctorNavbar";
 
@@ -7,11 +9,12 @@ const DoctorAppointment = () => {
   // console.log(doctorData);
   return (
     <>
-      <DoctorNavbar />
+      {/* <Navbar */}
+      {/* <DoctorNavbar /> */}
       <div className="container">
         <div className="row">
           <div className="col-lg-5 col-sm-6 mt-3">
-            <a href="doctor-view-appointment">
+            <Link to="/doctor-view-appointment">
               <div className="card text-white bg-primary mb-3">
                 <div className="card-header">Header</div>
                 <div className="card-body">
@@ -24,7 +27,7 @@ const DoctorAppointment = () => {
                   <h5 className="card-text">5</h5>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="col-lg-2 col-sm-6 mt-3"></div>
           <div className="col-lg-5 col-sm-6 mt-3">

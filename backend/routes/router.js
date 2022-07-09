@@ -16,8 +16,8 @@ module.exports = (app) => {
   //admin
   app.post(
     "/admin/register",
-    // extchek.array("profile"),
-    imageUpload.single("image"),
+    extchek.array("profile"),
+    // imageUpload.single("image"),
     adminController.register
   );
   app.post("/admin/login", adminController.login);
@@ -32,6 +32,9 @@ module.exports = (app) => {
   );
   app.patch("/admin/discharge/:id", adminController.dischargePatient);
   app.get("/admin/discharge/", adminController.dischargePatients);
+  app.post("/admin/me", adminController.getAdmin);
+  app.post("/patient/me", patientController.getPatient);
+  app.post("/doctor/me", doctorController.getDoctor);
 
   //doctors
   app.post(

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Components/Navbar";
 import { ToastContainer, toast } from "react-toastify";
@@ -54,7 +54,7 @@ const AdminUpdateDoctor = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Sidebar />
       <div className="content">
         <form>
@@ -113,7 +113,7 @@ const AdminUpdateDoctor = () => {
             />
           </div>
           <p>
-            Exisitng user? <a href="/doctorlogin">click here</a>
+            Exisitng user? <Link to="/doctorlogin">click here</Link>
           </p>
           <button
             type="submit"

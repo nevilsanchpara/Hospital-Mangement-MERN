@@ -21,7 +21,6 @@ const Home = () => {
   }, []);
   return (
     <>
-      <Navbar />
       <div className="image">
         <img src={img} className="main-img" alt="hostpital" />
       </div>

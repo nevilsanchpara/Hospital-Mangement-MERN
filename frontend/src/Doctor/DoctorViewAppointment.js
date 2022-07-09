@@ -25,46 +25,48 @@ const DoctorViewAppointment = (props) => {
   // console.log(appointments);
   return (
     <div>
-      <DoctorNavbar />
-      <p className="text-center mt-5">Discharged Patients</p>
-      <table className="table table-data mt-2">
-        <thead>
-          <tr>
-            <th scope="col" className="table-color">
-              #
-            </th>
-            <th scope="col" className="table-color">
-              Name
-            </th>
-            <th scope="col" className="table-color">
-              Description
-            </th>
-            <th scope="col" className="table-color">
-              Mobile
-            </th>
-            <th scope="col" className="table-color">
-              Address
-            </th>
-            <th scope="col" className="table-color">
-              Appointment Date
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointments?.map((appointment, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                {/* <td>{appointment}</td> */}
-                <td>{appointment.userId.name}</td>
-                <td>{appointment.description}</td>
-                <td>{appointment.userId.phone}</td>
-                <td>{appointment.userId.address}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {/* <DoctorNavbar /> */}
+      <div className="content">
+        <p className="text-center mt-5">Discharged Patients</p>
+        <table className="table table-data mt-2">
+          <thead>
+            <tr>
+              <th scope="col" className="table-color">
+                #
+              </th>
+              <th scope="col" className="table-color">
+                Name
+              </th>
+              <th scope="col" className="table-color">
+                Description
+              </th>
+              <th scope="col" className="table-color">
+                Mobile
+              </th>
+              <th scope="col" className="table-color">
+                Address
+              </th>
+              <th scope="col" className="table-color">
+                Appointment Date
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {appointments?.map((appointment, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  {/* <td>{appointment}</td> */}
+                  <td>{appointment.userId.name}</td>
+                  <td>{appointment.description}</td>
+                  <td>{appointment.userId.phone}</td>
+                  <td>{appointment.userId.address}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

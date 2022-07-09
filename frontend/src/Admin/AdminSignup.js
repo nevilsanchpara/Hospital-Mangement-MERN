@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import "./adminLogin.css";
 import Navbar from "./../Components/Navbar";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { signup } from "./../Redux/Services/AdminService";
 import Validation from "./../Components/Validation";
@@ -48,6 +48,7 @@ const AdminSignup = (props) => {
     //     console.log(error);
     //   });
     const result = await props.signup(myObj);
+    console.log(result);
     if (result) {
       toast.success("Registration Successfully done. Now do login!");
       setTimeout(() => {
@@ -62,7 +63,7 @@ const AdminSignup = (props) => {
   // console.log(resError);
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Admin form</h1>
@@ -100,7 +101,7 @@ const AdminSignup = (props) => {
               onChange={(e) => setPhone(e.target.value)}
             />
             <Validation error={resError.phone} />
-            Exisitng user? <a href="/adminlogin">click here</a>
+            Exisitng user? <Link to="/adminlogin">click here</Link>
           </div>
           <button
             type="submit"
@@ -110,6 +111,7 @@ const AdminSignup = (props) => {
           >
             Submit
           </button>
+          <Validation error={resError.error} />
         </form>
         <ToastContainer />
       </div>

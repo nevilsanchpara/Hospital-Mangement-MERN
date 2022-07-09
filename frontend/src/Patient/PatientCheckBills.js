@@ -23,74 +23,78 @@ const PatientCheckBills = (props) => {
   }, []);
   return (
     <>
-      <DoctorNavbar />
-      <p className="text-center mt-5">E-Bills of Appointments</p>
-      <table className="table table-data mt-2">
-        <thead>
-          <tr>
-            <th scope="col" className="table-color">
-              #
-            </th>
-            <th scope="col" className="table-color">
-              PatientName
-            </th>
-            <th scope="col" className="table-color">
-              Doctor Name
-            </th>
-            <th scope="col" className="table-color">
-              Number of days
-            </th>
-            <th scope="col" className="table-color">
-              Total
-            </th>
-            <th scope="col" className="table-color">
-              Date
-            </th>
-            <th scope="col" className="table-color">
-              Payment Status
-            </th>
-            <th scope="col" className="table-color">
-              PayBill
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((d, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{d.patientId.name}</td>
-                <td>{d?.doctorId?.name}</td>
-                <td>{d.daySpent}</td>
-                <td>{d.total}</td>
-                <td>{d._id}</td>
-                <td>{d.isPaymentDone ? "Success" : "Pending"}</td>
-                {/* <td>{d}</td>
+      {/* <DoctorNavbar /> */}
+      <div className="content">
+        <p className="text-center mt-5">E-Bills of Appointments</p>
+        <table className="table table-data mt-2">
+          <thead>
+            <tr>
+              <th scope="col" className="table-color">
+                #
+              </th>
+              <th scope="col" className="table-color">
+                PatientName
+              </th>
+              <th scope="col" className="table-color">
+                Doctor Name
+              </th>
+              <th scope="col" className="table-color">
+                Number of days
+              </th>
+              <th scope="col" className="table-color">
+                Total
+              </th>
+              <th scope="col" className="table-color">
+                Date
+              </th>
+              <th scope="col" className="table-color">
+                Payment Status
+              </th>
+              <th scope="col" className="table-color">
+                PayBill
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.map((d, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{d.patientId.name}</td>
+                  <td>{d?.doctorId?.name}</td>
+                  <td>{d.daySpent}</td>
+                  <td>{d.total}</td>
+                  <td>{d._id}</td>
+                  <td>{d.isPaymentDone ? "Success" : "Pending"}</td>
+                  {/* <td>{d}</td>
                 <td>{d}</td> */}
-                <td>
-                  {!d.isPaymentDone ? (
-                    <ImExit
-                      disable
-                      style={{
-                        color: "red",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => nav(`/patient-e-bill/${d.appointmentId}`)}
-                    />
-                  ) : (
-                    <MdOutlineDoneOutline
-                      style={{
-                        color: "green",
-                        // cursor: "no",
-                      }}
-                    />
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  <td>
+                    {!d.isPaymentDone ? (
+                      <ImExit
+                        disable
+                        style={{
+                          color: "red",
+                          cursor: "pointer",
+                        }}
+                        onClick={() =>
+                          nav(`/patient-e-bill/${d.appointmentId}`)
+                        }
+                      />
+                    ) : (
+                      <MdOutlineDoneOutline
+                        style={{
+                          color: "green",
+                          // cursor: "no",
+                        }}
+                      />
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

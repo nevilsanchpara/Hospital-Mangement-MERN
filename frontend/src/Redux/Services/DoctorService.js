@@ -1,6 +1,7 @@
 import { isEmail } from "./../../Helpers";
 import { setDoctorResponseError, setDoctorUser } from "../Actions/DoctorAction";
 import axios from "axios";
+import { setCommonType } from "./../Actions/CommonAction";
 export const signup = (obj) => async (dispatch) => {
   try {
     // console.log(obj);
@@ -72,6 +73,7 @@ export const login = (obj) => async (dispatch) => {
     // console.log(response.data);
     const { data } = response.data;
     dispatch(setDoctorUser(data));
+    dispatch(setCommonType("doctor"));
     localStorage.setItem("data", JSON.stringify(data));
     localStorage.setItem("type", "doctor");
     return true;

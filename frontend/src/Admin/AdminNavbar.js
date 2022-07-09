@@ -3,13 +3,19 @@ import { RiAdminLine } from "react-icons/ri";
 import { FaHospitalUser, FaHospitalAlt } from "react-icons/fa";
 import { MdOutlineSick } from "react-icons/md";
 import "../Css/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const AdminNavbar = () => {
+  const nav = useNavigate();
   const [data, setData] = useState();
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem("data")));
   }, []);
   console.log(data);
+  const logoutHandler = () => {
+    localStorage.clear();
+    nav("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
@@ -27,9 +33,9 @@ const AdminNavbar = () => {
                 <RiAdminLine className="admin-icon" />
                 Welcome, {data?.name}
               </Link>
-              <Link className="nav-item nav-link" to="/logout">
+              <h6 className="nav-item nav-link mt-1" onClick={logoutHandler}>
                 Logout
-              </Link>
+              </h6>
             </>
           )}
           {/* <Link className="nav-item nav-link" to="/admin-dashboard">
