@@ -1,12 +1,9 @@
 import axios from "axios";
-import React, { useState, useContext } from "react";
-// import "./GenerateBill.css";
-// import { DataContext } from "../context/DataContext";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../Sidebar";
-import AdminNavbar from "./AdminNavbar";
 
 const AdminEBill = () => {
   let params = useParams();
@@ -26,9 +23,7 @@ const AdminEBill = () => {
     e.preventDefault();
     axios
       .patch(`/admin/discharge/${params.id}`)
-      .then(function (response) {
-        console.log(response);
-      })
+      .then(function (response) {})
       .catch(function (error) {
         console.log(error.response);
       });

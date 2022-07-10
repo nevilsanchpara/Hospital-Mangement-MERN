@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 import moment from "moment-timezone";
 import { MdDoneOutline } from "react-icons/md";
 import { GiCancel } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../Sidebar";
 
 const AdminApproveAppointment = () => {
   const [appointments, setAppointments] = useState();
@@ -22,7 +20,6 @@ const AdminApproveAppointment = () => {
   }, []);
 
   const onApprove = (id) => {
-    console.log(id);
     let isApproved = "approved";
     axios
       .patch(`admin/changeAppointmentVerification/${id}?isApproved=approved`, {
@@ -50,8 +47,6 @@ const AdminApproveAppointment = () => {
         //   alert("Sorry");
         // }
         nav("/admin-dashboard");
-
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -59,8 +54,6 @@ const AdminApproveAppointment = () => {
   };
   return (
     <div>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="table-responsive">
           <table className="table table-data mt-2">

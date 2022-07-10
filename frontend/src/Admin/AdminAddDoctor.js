@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import AdminNavbar from "./AdminNavbar";
-import Sidebar from "./../Sidebar";
 import "./form.css";
 import { connect } from "react-redux";
 import { signup } from "./../Redux/Services/DoctorService";

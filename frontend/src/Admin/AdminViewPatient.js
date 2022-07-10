@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "./../Sidebar";
 
 const AdminViewPatient = () => {
   const nav = useNavigate();
@@ -43,8 +41,6 @@ const AdminViewPatient = () => {
   };
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="table-responsive">
           <p className="text-center mt-5">Patient</p>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
@@ -7,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
-import { adminDoctors } from "./../Redux/Services/AdminService";
-import Sidebar from "../Sidebar";
 
 const AdminViewDoctor = (props) => {
   const nav = useNavigate();
@@ -48,8 +45,6 @@ const AdminViewDoctor = (props) => {
 
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="table-responsive">
           <p className="text-center mt-5">Doctors</p>

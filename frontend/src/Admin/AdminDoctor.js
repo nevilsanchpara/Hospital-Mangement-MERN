@@ -1,17 +1,10 @@
-import React, { useContext } from "react";
-import AdminNavbar from "./AdminNavbar";
+import React from "react";
 import "./AdminDashboard.css";
-import DataContext from "../Context/DataContext";
 import { Link } from "react-router-dom";
-import Sidebar from "../Sidebar";
 
 const AdminDoctor = () => {
-  // const obj = useContext(DataContext);
-  // console.log(obj);
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="row">
           <div className="col-lg-4 col-sm-6 mt-3">

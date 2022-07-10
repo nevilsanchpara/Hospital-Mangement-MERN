@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "./AdminNavbar";
 import axios from "axios";
 import moment from "moment-timezone";
-import Sidebar from "../Sidebar";
 
 const AdminViewAppointment = () => {
   const [appointments, setAppointments] = useState();
@@ -19,8 +17,6 @@ const AdminViewAppointment = () => {
   }, []);
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="table-responsive">
           <p className="text-center mt-5">Appointments</p>

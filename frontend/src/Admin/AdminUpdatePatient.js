@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "./../Sidebar";
-import AdminNavbar from "./AdminNavbar";
 
 const AdminUpdatePatient = () => {
   let params = useParams();
@@ -50,8 +49,6 @@ const AdminUpdatePatient = () => {
   };
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       {/* <div className="content"> */}
       <div className="form-div">
         <form>

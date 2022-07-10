@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import AdminNavbar from "./AdminNavbar";
 import "./AdminDashboard.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-import Navbar from "./../Components/Navbar";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../Sidebar";
 import { connect } from "react-redux";
@@ -55,8 +51,6 @@ const AdminAddPatient = (props) => {
 
   return (
     <>
-      {/* <Navbar /> */}
-      <Sidebar />
       <div className="form-div">
         <form>
           <h1>Create Patient Account</h1>

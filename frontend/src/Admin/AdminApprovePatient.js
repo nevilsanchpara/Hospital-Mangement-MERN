@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "./AdminNavbar";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
-import Sidebar from "../Sidebar";
-// import axios from "axios";
 const AdminApprovePatient = () => {
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <p className="text-center mt-5">Doctors</p>
       <table class="table table-data mt-2">
         <thead>

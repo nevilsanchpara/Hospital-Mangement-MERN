@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AdminNavbar from "./AdminNavbar";
-import Sidebar from "./../Sidebar";
+// import Sidebar from "./../Sidebar";
 
 const AdminAddAppointment = () => {
   const nav = useNavigate();
@@ -35,7 +33,7 @@ const AdminAddAppointment = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.table(doctorId, description, userId);
+    // console.table(doctorId, description, userId);
     axios
       .post("/appointment", {
         doctorId,
@@ -44,7 +42,7 @@ const AdminAddAppointment = () => {
         isApproved: "approved",
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         if (response.data.code === 200) {
           toast.success("Appointment created succesfully!");
           setTimeout(() => {
@@ -62,7 +60,6 @@ const AdminAddAppointment = () => {
   return (
     <>
       {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="form-div">
         <form>
           <h1>Book Appointment Details</h1>

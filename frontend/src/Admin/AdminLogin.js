@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react";
-import Navbar from "../Components/Navbar";
 import "./adminLogin.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
@@ -10,7 +8,6 @@ import { login } from "../Redux/Services/AdminService";
 import Validation from "../Components/Validation";
 const AdminLogin = (props) => {
   const nav = useNavigate();
-  // const { data, setAdmin } = useContext(DataContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,14 +46,12 @@ const AdminLogin = (props) => {
       setTimeout(() => {
         nav("/admin-dashboard", { replace: true });
       }, 1000);
-      // alert("done");
     }
   };
   const { loading, resError = {} } = props.admin;
 
   return (
     <>
-      {/* <Navbar /> */}
       <div className="form-div">
         <form>
           <h1>Admin form</h1>

@@ -8,7 +8,9 @@ import "../Css/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { setCommonType } from "../Redux/Actions/CommonAction";
 import { useDispatch } from "react-redux";
-const Navbar = () => {
+import { GiHamburgerMenu } from "react-icons/gi";
+
+const Navbar = (props) => {
   const [data, setData] = useState();
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -25,9 +27,14 @@ const Navbar = () => {
   if (data) {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">
-          Hospital Management
-        </Link>
+        <div>
+          <div className="btn d-md-none" onClick={props.action}>
+            <GiHamburgerMenu />
+          </div>
+          <Link className="navbar-brand" to="/">
+            Hospital Management
+          </Link>
+        </div>
         <div className="wrapper">
           <h6 className="navbar-brand text-warning">
             Welcome, {data?.name.charAt(0).toUpperCase() + data.name.slice(1)}

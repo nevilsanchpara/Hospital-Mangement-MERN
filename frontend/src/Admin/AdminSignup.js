@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import "./adminLogin.css";
-import Navbar from "./../Components/Navbar";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -48,7 +46,6 @@ const AdminSignup = (props) => {
     //     console.log(error);
     //   });
     const result = await props.signup(myObj);
-    console.log(result);
     if (result) {
       toast.success("Registration Successfully done. Now do login!");
       setTimeout(() => {

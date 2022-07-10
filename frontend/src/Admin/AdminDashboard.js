@@ -1,26 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import AdminNavbar from "./AdminNavbar";
+import React, { useState, useEffect } from "react";
 import "./AdminDashboard.css";
 import axios from "axios";
-import DataContext from "../Context/DataContext";
 import "./Loading.css";
-import Sidebar from "./../Sidebar";
-// import "./../Sidebar.css";
 import { connect } from "react-redux";
 import moment from "moment";
 import { adminDoctors, adminPatients } from "./../Redux/Services/AdminService";
-import { Link } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 const AdminDashboard = (props) => {
   const [patients, setPatients] = useState();
   const [doctors, setDoctors] = useState();
   const [appointments, setAppointments] = useState();
-
-  // const data = useContext(DataContext);
-  // setHello("hi 2");
-  // setObj("hi 2");
-  // console.log(data);
-
   useEffect(() => {
     axios
       .get("/patient/patients")
@@ -72,13 +60,9 @@ const AdminDashboard = (props) => {
     return <div className="loader"></div>;
   }
   const { loading, adminUser, patientUsers, doctorUsers } = props.admin;
-  console.log(typeof patientUsers);
 
   return (
     <>
-      {/* <AdminNavbar /> */}
-      {/* <Navbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="row">
           <div className="col-lg-4 col-sm-6 mt-3">

@@ -1,12 +1,10 @@
 import React from "react";
-import AdminNavbar from "./AdminNavbar";
 import "./AdminDashboard.css";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 const AdminPatient = () => {
   return (
     <>
-      {/* <AdminNavbar /> */}
       <Sidebar />
       <div className="content">
         <div className="row">

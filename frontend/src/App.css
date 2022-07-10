@@ -74,3 +74,7 @@ hr {
     width: 50%;
   }
 } */
+
+.navbar {
+  z-index: 10;
+}

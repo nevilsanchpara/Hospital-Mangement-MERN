@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "./AdminNavbar";
-import { MdCancel, MdDoneOutline } from "react-icons/md";
+import { MdDoneOutline } from "react-icons/md";
 import { GiCancel } from "react-icons/gi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../Sidebar";
 
 const AdminApproveDoctor = () => {
   const [doctors, setDoctors] = useState();
@@ -50,8 +48,6 @@ const AdminApproveDoctor = () => {
         //   alert("Sorry");
         // }
         nav("/admin-dashboard");
-
-        console.log(response);
       })
 
       .catch(function (error) {
@@ -61,8 +57,6 @@ const AdminApproveDoctor = () => {
 
   return (
     <>
-      {/* <AdminNavbar /> */}
-      <Sidebar />
       <div className="content">
         <div className="table-responsive">
           <p className="text-center mt-5">Doctors</p>

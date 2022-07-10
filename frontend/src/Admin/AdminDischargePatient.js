@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import AdminNavbar from "./AdminNavbar";
+import React, { useState, useEffect } from "react";
 import { IoMdExit } from "react-icons/io";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,7 @@ const AdminDischargePatient = () => {
     axios
       .get(`/admin/discharge/`)
       .then(function (response) {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setAppointments(response.data.data);
         // setAppointments(response.data.data._id);
       })
